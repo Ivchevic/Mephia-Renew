@@ -32,10 +32,9 @@ jobs:
           curl -s -x http://127.0.0.1:8080 https://api.ipify.org \
             | sed 's/\([0-9]*\)\..*/\1.*.*.*/'
 
-      - name: 🔧 执行续期
+      - name: 🔧 执行多账号续期
         env:
-          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-          SESSION_ID:    ${{ secrets.SESSION_ID }}
-          GOST_PROXY:    ${{ secrets.GOST_PROXY }}
-          TG_BOT:        ${{ secrets.TG_BOT }}
+          ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON }}
+          GOST_PROXY: ${{ secrets.GOST_PROXY }}
+          GLOBAL_TG_BOT: ${{ secrets.TG_BOT }}
         run: bash mephia_renew.sh
