@@ -58,7 +58,8 @@ jobs:
           else 
             # Commit 附带北京时间
             git commit -m "⏱️ 更新时间文件: $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')"
-            git pull --rebase origin main
+            # ⬇️ 核心修改：添加 --autostash 参数
+            git pull --rebase --autostash origin main
             git push origin HEAD:main
           fi
         
